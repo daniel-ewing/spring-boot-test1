@@ -11,12 +11,12 @@ public class DelegateTask implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        if (log.isDebugEnabled()) log.info("-----> execute: Enter");
+        log.debug("-----> execute: Enter");
         
 /*
 //Do something, e.g.:
         ManagementService managementService = delegateExecution.getProcessEngineServices().getManagementService();
  */
-        if (log.isDebugEnabled()) log.info("-----> execute: Exit");
+        log.debug("-----> execute: Exit");
     }
 }

@@ -11,12 +11,12 @@ public class UserTaskExecutionStart implements ExecutionListener {
 
     @Override
     public void notify(DelegateExecution delegateExecution) {
-        if (log.isDebugEnabled()) log.info("-----> notify: Enter");
+        log.debug("-----> notify: Enter");
 
 /*
 //Do something, e.g.:
         ManagementService managementService = delegateExecution.getProcessEngineServices().getManagementService();
  */
-        if (log.isDebugEnabled()) log.info("-----> notify: Exit");
+        log.debug("-----> notify: Exit");
     }
 }

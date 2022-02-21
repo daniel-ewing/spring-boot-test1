@@ -20,16 +20,16 @@ public class ProcessApplication {
 
 	@EventListener
 	private void processPostDeploy(PostDeployEvent event) {
-		if (log.isDebugEnabled()) log.info("-----> processPostDeploy: Enter");
+		log.debug("-----> processPostDeploy: Enter");
 
 		for (int pi = 1; pi <= 1; pi++) {
 			runtimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi);
 			if ((pi % 1000) == 0) {
-				if (log.isDebugEnabled()) log.info("-----> processPostDeploy created: {} process instances", pi);
+				log.debug("-----> processPostDeploy created: {} process instances", pi);
 			}
 		}
 
-		if (log.isDebugEnabled()) log.info("-----> processPostDeploy: Exit");
+		log.debug("-----> processPostDeploy: Exit");
 	}
 
 	public static void main(String... args) {

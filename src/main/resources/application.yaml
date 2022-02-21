@@ -68,7 +68,7 @@ logging:
   level:
     # Camunda Loggers
     org.camunda: INFO     # WARNING!! THIS NAMESPACE WILL OUTPUT ALL CAMUNDA LOGS AT THE SPECIFIED LEVEL.
-    org.camunda.bpm.spring.boot.test1: DEBUG
+    com.dewing.spring.boot.test1: DEBUG
 #    org.camunda.bpm.engine.cmd: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity: DEBUG
 #    org.camunda.bpm.engine.impl.batch.BatchEntity: DEBUG
