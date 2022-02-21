@@ -1,1 +1,1 @@
-Main-Class: org.camunda.bpm.spring.boot.test1.ProcessApplication
+Main-Class: com.dewing.spring.boot.test1.ProcessApplication
