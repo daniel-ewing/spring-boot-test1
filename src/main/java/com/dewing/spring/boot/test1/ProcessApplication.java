@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.event.EventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootApplication
 @EnableProcessApplication
 @Slf4j
@@ -22,8 +25,12 @@ public class ProcessApplication {
 	private void processPostDeploy(PostDeployEvent event) {
 		if (log.isDebugEnabled()) log.debug("-----> processPostDeploy: Enter");
 
-		for (int pi = 1; pi <= 1; pi++) {
-			runtimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi);
+		Map<String, Object> vars;
+		for (int pi = 1; pi <= 10; pi++) {
+			vars = new HashMap<>();
+			vars.put("VarA","ValA" + pi);
+			vars.put("VarB","ValB" + pi);
+			runtimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi, vars);
 			if ((pi % 1000) == 0) {
 				if (log.isDebugEnabled()) log.debug("-----> processPostDeploy created: {} process instances", pi);
 			}

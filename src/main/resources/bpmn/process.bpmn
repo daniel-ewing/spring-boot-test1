@@ -22,33 +22,65 @@
       <bpmn:incoming>Flow_1gcymjn</bpmn:incoming>
       <bpmn:outgoing>Flow_0lunvtl</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:subProcess id="event-subprocess" name="Event Subprocess" triggeredByEvent="true">
+      <bpmn:startEvent id="start-message" name="Start Message" camunda:asyncBefore="true" isInterrupting="false">
+        <bpmn:extensionElements>
+          <camunda:executionListener delegateExpression="${startMessageExecutionStart}" event="start" />
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_0ajy42i</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_0tiyupg" messageRef="Message_03sylle" />
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_0ajy42i" sourceRef="start-message" targetRef="event-user-task" />
+      <bpmn:endEvent id="end-message" name="End Message">
+        <bpmn:incoming>Flow_0606ybe</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0606ybe" sourceRef="event-user-task" targetRef="end-message" />
+      <bpmn:userTask id="event-user-task" name="Event User Task">
+        <bpmn:incoming>Flow_0ajy42i</bpmn:incoming>
+        <bpmn:outgoing>Flow_0606ybe</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:textAnnotation id="TextAnnotation_0tenkih">
+        <bpmn:text>This task has an 
+execution start listener.</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_1394ili" sourceRef="start-message" targetRef="TextAnnotation_0tenkih" />
+      <bpmn:textAnnotation id="TextAnnotation_15j7w67">
+        <bpmn:text>This is Asynchronous Before,
+in case an OLE occurs</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_1ywhyei" sourceRef="start-message" targetRef="TextAnnotation_15j7w67" />
+    </bpmn:subProcess>
     <bpmn:textAnnotation id="task-annotation">
       <bpmn:text>This task has execution
 and task listeners.</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1g3gxwl" sourceRef="user-task" targetRef="task-annotation" />
   </bpmn:process>
+  <bpmn:message id="Message_03sylle" name="start-message" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process">
-      <bpmndi:BPMNShape id="TextAnnotation_11eq9ep_di" bpmnElement="task-annotation">
-        <dc:Bounds x="430" y="80" width="150" height="40" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_07ponm3_di" bpmnElement="Flow_07ponm3">
-        <di:waypoint x="215" y="187" />
-        <di:waypoint x="270" y="187" />
+      <bpmndi:BPMNEdge id="Flow_0lunvtl_di" bpmnElement="Flow_0lunvtl">
+        <di:waypoint x="530" y="187" />
+        <di:waypoint x="602" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1gcymjn_di" bpmnElement="Flow_1gcymjn">
         <di:waypoint x="370" y="187" />
         <di:waypoint x="430" y="187" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0lunvtl_di" bpmnElement="Flow_0lunvtl">
-        <di:waypoint x="530" y="187" />
-        <di:waypoint x="602" y="187" />
+      <bpmndi:BPMNEdge id="Flow_07ponm3_di" bpmnElement="Flow_07ponm3">
+        <di:waypoint x="215" y="187" />
+        <di:waypoint x="270" y="187" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
         <dc:Bounds x="179" y="169" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="185" y="212" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ipy0m9_di" bpmnElement="Event_Stop">
+        <dc:Bounds x="602" y="169" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="608" y="212" width="24" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1psbnf5_di" bpmnElement="delegate-task">
@@ -57,15 +89,52 @@ and task listeners.</bpmn:text>
       <bpmndi:BPMNShape id="Activity_05dly3o_di" bpmnElement="user-task">
         <dc:Bounds x="430" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1ipy0m9_di" bpmnElement="Event_Stop">
-        <dc:Bounds x="602" y="169" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="608" y="212" width="24" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="TextAnnotation_11eq9ep_di" bpmnElement="task-annotation">
+        <dc:Bounds x="430" y="80" width="150" height="40" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1g3gxwl_di" bpmnElement="Association_1g3gxwl">
         <di:waypoint x="480" y="147" />
         <di:waypoint x="480" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1gogegu_di" bpmnElement="event-subprocess" isExpanded="true">
+        <dc:Bounds x="150" y="310" width="430" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0tenkih_di" bpmnElement="TextAnnotation_0tenkih">
+        <dc:Bounds x="200" y="350" width="150" height="39" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_15j7w67_di" bpmnElement="TextAnnotation_15j7w67">
+        <dc:Bounds x="190" y="510" width="170" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ajy42i_di" bpmnElement="Flow_0ajy42i">
+        <di:waypoint x="226" y="450" />
+        <di:waypoint x="280" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0606ybe_di" bpmnElement="Flow_0606ybe">
+        <di:waypoint x="380" y="450" />
+        <di:waypoint x="442" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0h1fku6_di" bpmnElement="start-message">
+        <dc:Bounds x="190" y="432" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="174" y="475" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kgywei_di" bpmnElement="end-message">
+        <dc:Bounds x="442" y="432" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="428" y="475" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0o8vb81_di" bpmnElement="event-user-task">
+        <dc:Bounds x="280" y="410" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1394ili_di" bpmnElement="Association_1394ili">
+        <di:waypoint x="211" y="432" />
+        <di:waypoint x="217" y="389" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1ywhyei_di" bpmnElement="Association_1ywhyei">
+        <di:waypoint x="215" y="466" />
+        <di:waypoint x="234" y="510" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
