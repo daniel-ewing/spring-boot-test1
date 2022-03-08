@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0b4f8tx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
+  <bpmn:process id="process-0" name="Process 0" isExecutable="true">
+    <bpmn:startEvent id="start" name="Start" camunda:asyncBefore="true">
+      <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="user-task-0" />
+    <bpmn:endEvent id="Event_Stop" name="Stop">
+      <bpmn:incoming>Flow_07odg2h</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0lunvtl" sourceRef="user-task-0" targetRef="start-process-1" />
+    <bpmn:userTask id="user-task-0" name="User Task 0">
+      <bpmn:extensionElements>
+        <camunda:taskListener delegateExpression="${userTaskCreate}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_07ponm3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lunvtl</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="start-process-1" name="Start Process 1" camunda:asyncBefore="true" camunda:delegateExpression="${startProcess1}">
+      <bpmn:incoming>Flow_0lunvtl</bpmn:incoming>
+      <bpmn:outgoing>Flow_07odg2h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_07odg2h" sourceRef="start-process-1" targetRef="Event_Stop" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process-0">
+      <bpmndi:BPMNEdge id="Flow_0lunvtl_di" bpmnElement="Flow_0lunvtl">
+        <di:waypoint x="360" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07ponm3_di" bpmnElement="Flow_07ponm3">
+        <di:waypoint x="195" y="117" />
+        <di:waypoint x="260" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07odg2h_di" bpmnElement="Flow_07odg2h">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="592" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
+        <dc:Bounds x="159" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="165" y="142" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05dly3o_di" bpmnElement="user-task-0">
+        <dc:Bounds x="260" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ipy0m9_di" bpmnElement="Event_Stop">
+        <dc:Bounds x="592" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="598" y="142" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0fog6ng_di" bpmnElement="start-process-1">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
