@@ -87,8 +87,8 @@
 <!--    <camunda.starter.version>7.15.6-ee</camunda.starter.version>-->
 <!--    <spring.version>2.5.5</spring.version>-->
 
-    <camunda.version>7.16.2-ee</camunda.version>
-    <camunda.starter.version>7.16.2-ee</camunda.starter.version>
+    <camunda.version>7.16.3-ee</camunda.version>
+    <camunda.starter.version>7.16.3-ee</camunda.starter.version>
     <spring.version>2.5.5</spring.version>
 
     <lombok.version>1.18.22</lombok.version>
