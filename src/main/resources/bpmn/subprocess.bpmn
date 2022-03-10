@@ -7,11 +7,6 @@
     <bpmn:sequenceFlow id="Flow_0utu1u5" sourceRef="start" targetRef="subprocess-user-task" />
     <bpmn:sequenceFlow id="Flow_0uh8uz7" sourceRef="subprocess-user-task" targetRef="end" />
     <bpmn:userTask id="subprocess-user-task" name="Subprocess User Task">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:outputParameter name="approved">${isApproved}</camunda:outputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0utu1u5</bpmn:incoming>
       <bpmn:outgoing>Flow_0uh8uz7</bpmn:outgoing>
     </bpmn:userTask>
