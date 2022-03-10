@@ -30,6 +30,7 @@ camunda:
         # Telemetry
         initializeTelemetry: false
         telemetryReporterActivate: false
+    id-generator: strong # Other values: prefixed or simple (simple is not recommended).
     job-execution:
       enabled: true
 
@@ -40,7 +41,7 @@ server:
 spring:
   h2.console.enabled: true
   datasource:
-#    url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
     url: jdbc:h2:mem:camunda-db
     username: sa
     password: sa

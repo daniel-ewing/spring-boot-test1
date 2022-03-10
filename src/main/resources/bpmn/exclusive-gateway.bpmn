@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0cg74it" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <bpmn:process id="exclusive-gateway" name="Exclusive Gateway" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1" name="Start 1" camunda:asyncBefore="true">
+    <bpmn:startEvent id="start" name="Start" camunda:asyncBefore="true">
       <bpmn:outgoing>Flow_0cnpljr</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0cnpljr" sourceRef="StartEvent_1" targetRef="UserTask1" />
-    <bpmn:serviceTask id="ExternalTask1" name="External Task 1" camunda:asyncBefore="true" camunda:type="external" camunda:topic="external-task-1">
+    <bpmn:sequenceFlow id="Flow_0cnpljr" sourceRef="start" targetRef="user-task-1" />
+    <bpmn:serviceTask id="external-task" name="External Task" camunda:asyncBefore="true" camunda:type="external" camunda:topic="external-task">
       <bpmn:incoming>Flow_0zpahpn</bpmn:incoming>
       <bpmn:outgoing>Flow_0ytce9h</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="DelegateTask1" name="Delegate Task 1" camunda:asyncBefore="true" camunda:delegateExpression="${delegateTask1}">
+    <bpmn:serviceTask id="delegate-task" name="Delegate Task" camunda:asyncBefore="true" camunda:delegateExpression="${delegateTask}">
       <bpmn:incoming>Flow_0zjdk1c</bpmn:incoming>
       <bpmn:outgoing>Flow_1syyvkx</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -19,7 +19,7 @@
       <bpmn:outgoing>Flow_0zjdk1c</bpmn:outgoing>
       <bpmn:outgoing>Flow_1v5rw1o</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="UserTask1" name="User Task 1">
+    <bpmn:userTask id="user-task-1" name="User Task 1">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="nextTaskName" label="Next Task Name" type="enum">
@@ -32,14 +32,14 @@
       <bpmn:incoming>Flow_0cnpljr</bpmn:incoming>
       <bpmn:outgoing>Flow_1hd18ya</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0zpahpn" name="External" sourceRef="Gateway_0982x46" targetRef="ExternalTask1">
+    <bpmn:sequenceFlow id="Flow_0zpahpn" name="External" sourceRef="Gateway_0982x46" targetRef="external-task">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${nextTaskName=="externalTask1"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0zjdk1c" name="Delegate" sourceRef="Gateway_0982x46" targetRef="DelegateTask1">
+    <bpmn:sequenceFlow id="Flow_0zjdk1c" name="Delegate" sourceRef="Gateway_0982x46" targetRef="delegate-task">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${nextTaskName=="delegateTask1"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1hd18ya" sourceRef="UserTask1" targetRef="Gateway_0982x46" />
-    <bpmn:sequenceFlow id="Flow_1v5rw1o" name="User" sourceRef="Gateway_0982x46" targetRef="UserTask2">
+    <bpmn:sequenceFlow id="Flow_1hd18ya" sourceRef="user-task-1" targetRef="Gateway_0982x46" />
+    <bpmn:sequenceFlow id="Flow_1v5rw1o" name="User" sourceRef="Gateway_0982x46" targetRef="user-task-2">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${nextTaskName=="userTask2"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_1avc40v">
@@ -48,19 +48,19 @@
       <bpmn:incoming>Flow_0doyn8f</bpmn:incoming>
       <bpmn:outgoing>Flow_0x9jms6</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1syyvkx" sourceRef="DelegateTask1" targetRef="Gateway_1avc40v" />
-    <bpmn:sequenceFlow id="Flow_0ytce9h" sourceRef="ExternalTask1" targetRef="Gateway_1avc40v" />
-    <bpmn:sequenceFlow id="Flow_0doyn8f" sourceRef="UserTask2" targetRef="Gateway_1avc40v" />
-    <bpmn:userTask id="UserTask2" name="User Task 2">
+    <bpmn:sequenceFlow id="Flow_1syyvkx" sourceRef="delegate-task" targetRef="Gateway_1avc40v" />
+    <bpmn:sequenceFlow id="Flow_0ytce9h" sourceRef="external-task" targetRef="Gateway_1avc40v" />
+    <bpmn:sequenceFlow id="Flow_0doyn8f" sourceRef="user-task-2" targetRef="Gateway_1avc40v" />
+    <bpmn:userTask id="user-task-2" name="User Task 2">
       <bpmn:incoming>Flow_1v5rw1o</bpmn:incoming>
       <bpmn:outgoing>Flow_0doyn8f</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="EndEvent_1" name="End 1">
+    <bpmn:endEvent id="end" name="End">
       <bpmn:incoming>Flow_00yvkh4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0x9jms6" sourceRef="Gateway_1avc40v" targetRef="UserTask3" />
-    <bpmn:sequenceFlow id="Flow_00yvkh4" sourceRef="UserTask3" targetRef="EndEvent_1" />
-    <bpmn:userTask id="UserTask3" name="User Task 3">
+    <bpmn:sequenceFlow id="Flow_0x9jms6" sourceRef="Gateway_1avc40v" targetRef="user-task-3" />
+    <bpmn:sequenceFlow id="Flow_00yvkh4" sourceRef="user-task-3" targetRef="end" />
+    <bpmn:userTask id="user-task-3" name="User Task 3">
       <bpmn:incoming>Flow_0x9jms6</bpmn:incoming>
       <bpmn:outgoing>Flow_00yvkh4</bpmn:outgoing>
     </bpmn:userTask>
@@ -120,37 +120,37 @@
         <di:waypoint x="208" y="117" />
         <di:waypoint x="260" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
         <dc:Bounds x="172" y="99" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="177" y="142" width="33" height="14" />
+          <dc:Bounds x="181" y="142" width="25" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0tx7kjz_di" bpmnElement="ExternalTask1">
+      <bpmndi:BPMNShape id="Activity_0tx7kjz_di" bpmnElement="external-task">
         <dc:Bounds x="420" y="330" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05xsezu_di" bpmnElement="DelegateTask1">
+      <bpmndi:BPMNShape id="Activity_05xsezu_di" bpmnElement="delegate-task">
         <dc:Bounds x="420" y="200" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0982x46_di" bpmnElement="Gateway_0982x46" isMarkerVisible="true">
         <dc:Bounds x="285" y="345" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_08we697_di" bpmnElement="UserTask1">
+      <bpmndi:BPMNShape id="Activity_08we697_di" bpmnElement="user-task-1">
         <dc:Bounds x="260" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1avc40v_di" bpmnElement="Gateway_1avc40v" isMarkerVisible="true">
         <dc:Bounds x="625" y="345" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1nw8tkn_di" bpmnElement="UserTask2">
+      <bpmndi:BPMNShape id="Activity_1nw8tkn_di" bpmnElement="user-task-2">
         <dc:Bounds x="420" y="460" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0xidq2y_di" bpmnElement="EndEvent_1">
+      <bpmndi:BPMNShape id="Event_0xidq2y_di" bpmnElement="end">
         <dc:Bounds x="852" y="352" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="857" y="395" width="29" height="14" />
+          <dc:Bounds x="862" y="395" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0iji61v_di" bpmnElement="UserTask3">
+      <bpmndi:BPMNShape id="Activity_0iji61v_di" bpmnElement="user-task-3">
         <dc:Bounds x="700" y="330" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>

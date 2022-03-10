@@ -11,12 +11,12 @@ public class UserTaskCreate implements TaskListener {
 
     @Override
     public void notify(DelegateTask delegateTask) {
-        if (log.isDebugEnabled()) log.debug("-----> notify: Enter");
+        if (log.isDebugEnabled()) log.debug("-----> notify: Enter - {}", delegateTask.getExecution().getCurrentActivityId());
 
 /*
 //Do something, e.g.:
         ManagementService managementService = delegateExecution.getProcessEngineServices().getManagementService();
  */
-        if (log.isDebugEnabled()) log.debug("-----> notify: Exit");
+        if (log.isDebugEnabled()) log.debug("-----> notify: Exit - {}", delegateTask.getExecution().getCurrentActivityId());
     }
 }
