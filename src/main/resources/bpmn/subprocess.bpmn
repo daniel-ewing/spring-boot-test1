@@ -9,10 +9,19 @@
     <bpmn:endEvent id="end" name="End">
       <bpmn:incoming>Flow_0uh8uz7</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="get-variables" name="Get Variables" camunda:delegateExpression="${getVariables}">
+    <bpmn:scriptTask id="get-variables" name="Get Variables" scriptFormat="groovy">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="variable1IsSet">${variable1 != null}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0utu1u5</bpmn:incoming>
       <bpmn:outgoing>Flow_0uh8uz7</bpmn:outgoing>
-    </bpmn:serviceTask>
+      <bpmn:script>println("VARIABLE0: " + variable0)
+println("VARIABLE1: " + variable1)
+println("FILEID: " + fileId)
+</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmn:error id="Error_1kectq7" name="Error_3g49fan" errorCode="101" camunda:errorMessage="Sub BPM 1 Error" />
   <bpmn:error id="Error_11oentp" name="Sub BPM 1 Error" errorCode="ErrorInSubBPM1" />
@@ -38,7 +47,7 @@
           <dc:Bounds x="480" y="142" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0gg8ypu_di" bpmnElement="get-variables">
+      <bpmndi:BPMNShape id="Activity_1qhll7w_di" bpmnElement="get-variables">
         <dc:Bounds x="290" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>

@@ -11,11 +11,11 @@ import java.util.Map;
 
 @Component
 @Slf4j
-public class SendMessage implements JavaDelegate {
-    private final String messageName = "message";
+public class SendMessage1 implements JavaDelegate {
+    private final String messageName = "message-1";
     private RuntimeService runtimeService;
 
-    public SendMessage(RuntimeService runtimeService) {
+    public SendMessage1(RuntimeService runtimeService) {
         this.runtimeService = runtimeService;
     }
 
@@ -24,8 +24,9 @@ public class SendMessage implements JavaDelegate {
         if (log.isDebugEnabled()) log.debug("-----> execute: Enter - {}", delegateExecution.getCurrentActivityId());
 
         Map<String, Object> vars = new HashMap<>();
+        vars.put("variable0", "AfterParallelGateway");
         vars.put("variable1", "value1");
-        vars.put("variable2", true);
+        vars.put("fileId", "other/stuff");
 
         runtimeService.correlateMessage(messageName, delegateExecution.getProcessBusinessKey(), vars);
 
