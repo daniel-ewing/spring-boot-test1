@@ -151,7 +151,15 @@
       <scope>provided</scope>
     </dependency>
 
-<!--    <dependency>-->
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-all</artifactId>
+      <version>3.0.10</version>
+      <type>pom</type>
+    </dependency>
+
+
+    <!--    <dependency>-->
 <!--      <groupId>com.microsoft.sqlserver</groupId>-->
 <!--      <artifactId>mssql-jdbc</artifactId>-->
 <!--      <version>${mssql-jdbc.version}</version>-->
