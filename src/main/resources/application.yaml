@@ -9,8 +9,8 @@ camunda:
 #    enableExceptionsAfterUnhandledBpmnError: true
     filter:
       create: All tasks
-    generic-properties:
-      properties:
+#    generic-properties:
+#      properties:
         # History Cleanup
 #        historyCleanupStrategy: removalTimeBased
 #        historyRemovalTimeStrategy: end
@@ -28,8 +28,8 @@ camunda:
         # Tasklist Query
 #        queryMaxResultsLimit: 2000
         # Telemetry
-        initializeTelemetry: false
-        telemetryReporterActivate: false
+#        initializeTelemetry: false
+#        telemetryReporterActivate: false
     id-generator: strong # Other values: prefixed or simple (simple is not recommended).
     job-execution:
       enabled: true
