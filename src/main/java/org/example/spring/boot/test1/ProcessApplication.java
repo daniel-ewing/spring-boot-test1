@@ -1,4 +1,4 @@
-package com.dewing.spring.boot.test1;
+package org.example.spring.boot.test1;
 
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.RuntimeService;

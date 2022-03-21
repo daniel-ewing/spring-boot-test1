@@ -1,1 +1,1 @@
-Main-Class: com.dewing.spring.boot.test1.ProcessApplication
+Main-Class: org.example.spring.boot.test1.ProcessApplication
