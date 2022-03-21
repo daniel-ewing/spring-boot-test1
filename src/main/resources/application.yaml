@@ -49,10 +49,10 @@ spring:
 ## MS SQL Server datasource
 #spring:
 #  datasource:
-#    url: jdbc:sqlserver://localhost:1417;databaseName=camunda
+#    url: jdbc:sqlserver://localhost:1417;databaseName=camunda_cs
 #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #    username: sa
-#    password: gLobaL360
+#    password: Camunda1
 
 ## Oracle datasource
 #spring:
@@ -60,7 +60,7 @@ spring:
 #    url: jdbc:oracle:thin:@localhost:1521/ORCLPDB1
 #    driver-class-name: oracle.jdbc.OracleDriver
 #    username: camunda
-#    password: gLobaL360
+#    password: Camunda1
 
 # Logging Settings
 logging:
@@ -69,7 +69,7 @@ logging:
   level:
     # Camunda Loggers
     org.camunda: INFO     # WARNING!! THIS NAMESPACE WILL OUTPUT ALL CAMUNDA LOGS AT THE SPECIFIED LEVEL.
-    com.dewing.spring.boot.test1: DEBUG
+    org.example.spring.boot.test1: DEBUG
 #    org.camunda.bpm.engine.cmd: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity: DEBUG
 #    org.camunda.bpm.engine.impl.batch.BatchEntity: DEBUG

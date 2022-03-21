@@ -1,4 +1,4 @@
-package com.dewing.spring.boot.test1.delegate;
+package org.example.spring.boot.test1.delegate;
 
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
