@@ -6,6 +6,8 @@ camunda:
       firstName: Camunda
       lastName: Admin
       email: CamundaAdmin@camunda.com
+    authorization:
+      enabled: true
 #    enableExceptionsAfterUnhandledBpmnError: true
     filter:
       create: All tasks
