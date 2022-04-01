@@ -39,8 +39,6 @@
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">true</property>
-<!--            <property name="resourceRootPath">pa:default/bpmn/</property>-->
-            <property name="resourceRootPath">classpath:BOOT-INF/classes/default/bpmn/</property>
         </properties>
     </process-archive>
 
@@ -49,7 +47,6 @@
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">true</property>
-            <property name="resourceRootPath">pa:tenant1/</property>
         </properties>
     </process-archive>
 
@@ -58,7 +55,6 @@
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">true</property>
-            <property name="resourceRootPath">pa:tenant2/</property>
         </properties>
     </process-archive>
 

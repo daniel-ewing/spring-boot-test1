@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0b4f8tx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
-  <bpmn:process id="default-process" name="Default Process" isExecutable="true">
+  <bpmn:process id="process" name="Process" isExecutable="true">
     <bpmn:startEvent id="start" name="Start" camunda:asyncBefore="true">
       <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
     </bpmn:startEvent>
@@ -29,7 +29,7 @@ and task listeners.</bpmn:text>
     <bpmn:association id="Association_1g3gxwl" sourceRef="user-task" targetRef="task-annotation" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="default-process">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process">
       <bpmndi:BPMNEdge id="Flow_0lunvtl_di" bpmnElement="Flow_0lunvtl">
         <di:waypoint x="530" y="187" />
         <di:waypoint x="602" y="187" />

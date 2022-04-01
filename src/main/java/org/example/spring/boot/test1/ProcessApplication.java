@@ -13,9 +13,7 @@ import org.springframework.context.event.EventListener;
 @EnableProcessApplication
 @Slf4j
 public class ProcessApplication {
-	private final static String defaultProcessKey = "default-process";
-	private final static String tenant1ProcessKey = "tenant1-process";
-	private final static String tenant2ProcessKey = "tenant2-process";
+	private final static String processKey = "process";
 	private RuntimeService defaultRuntimeService;
 	private RuntimeService tenant1RuntimeService;
 	private RuntimeService tenant2RuntimeService;
@@ -29,9 +27,9 @@ public class ProcessApplication {
 		this.tenant2RuntimeService = ProcessEngines.getProcessEngine("tenant2").getRuntimeService();
 
 		for (int pi = 1; pi <= 1; pi++) {
-			defaultRuntimeService.startProcessInstanceByKey(defaultProcessKey, defaultProcessKey + " bk " + pi);
-//			tenant1RuntimeService.startProcessInstanceByKey(tenant1ProcessKey, tenant1ProcessKey + " bk " + pi);
-//			tenant2RuntimeService.startProcessInstanceByKey(tenant2ProcessKey, tenant2ProcessKey + " bk " + pi);
+			defaultRuntimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi);
+			tenant1RuntimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi);
+			tenant2RuntimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi);
 			if ((pi % 1000) == 0) {
 				if (log.isDebugEnabled()) log.debug("-----> processPostDeploy created: {} process instances", pi);
 			}
