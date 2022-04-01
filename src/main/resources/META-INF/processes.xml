@@ -1,0 +1,65 @@
+<process-application
+        xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+>
+
+    <process-engine name="tenant1">
+        <configuration>org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration</configuration>
+        <properties>
+            <property name="authorizationEnabled">true</property>
+            <property name="databaseSchemaUpdate">false</property>
+            <property name="databaseTablePrefix">TENANT1.</property>
+            <property name="jdbcUrl">jdbc:sqlserver://localhost:1417;databaseName=camunda_cs</property>
+            <property name="jdbcDriver">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+            <property name="jdbcUsername">sa</property>
+            <property name="jdbcPassword">Camunda1</property>
+            <property name="jobExecutorActivate">true</property>
+            <property name="jobExecutorDeploymentAware">true</property>
+        </properties>
+    </process-engine>
+
+    <process-engine name="tenant2">
+        <configuration>org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration</configuration>
+        <properties>
+            <property name="authorizationEnabled">true</property>
+            <property name="databaseSchemaUpdate">false</property>
+            <property name="databaseTablePrefix">TENANT2.</property>
+            <property name="jdbcUrl">jdbc:sqlserver://localhost:1417;databaseName=camunda_cs</property>
+            <property name="jdbcDriver">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+            <property name="jdbcUsername">sa</property>
+            <property name="jdbcPassword">Camunda1</property>
+            <property name="jobExecutorActivate">true</property>
+            <property name="jobExecutorDeploymentAware">true</property>
+        </properties>
+    </process-engine>
+
+<!-- This is a simplistic example where all tenant engines auto-deploy the same resources. -->
+    <process-archive name="default-process-application">
+<!--    The "default" engine is auto-configured by spring boot using the properties in the application.properties or application.yaml file. -->
+        <process-engine>default</process-engine>
+        <properties>
+            <property name="isDeleteUponUndeploy">false</property>
+            <property name="isScanForProcessDefinitions">true</property>
+<!--            <property name="resourceRootPath">pa:default/bpmn/</property>-->
+            <property name="resourceRootPath">classpath:BOOT-INF/classes/default/bpmn/</property>
+        </properties>
+    </process-archive>
+
+    <process-archive name="tenant1-process-application">
+        <process-engine>tenant1</process-engine>
+        <properties>
+            <property name="isDeleteUponUndeploy">false</property>
+            <property name="isScanForProcessDefinitions">true</property>
+            <property name="resourceRootPath">pa:tenant1/</property>
+        </properties>
+    </process-archive>
+
+    <process-archive name="tenant2-process-application">
+        <process-engine>tenant2</process-engine>
+        <properties>
+            <property name="isDeleteUponUndeploy">false</property>
+            <property name="isScanForProcessDefinitions">true</property>
+            <property name="resourceRootPath">pa:tenant2/</property>
+        </properties>
+    </process-archive>
+
+</process-application>

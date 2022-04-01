@@ -87,8 +87,8 @@
 <!--    <camunda.starter.version>7.15.6-ee</camunda.starter.version>-->
 <!--    <spring.version>2.5.5</spring.version>-->
 
-    <camunda.version>7.16.2-ee</camunda.version>
-    <camunda.starter.version>7.16.2-ee</camunda.starter.version>
+    <camunda.version>7.16.0-ee</camunda.version>
+    <camunda.starter.version>7.16.0-ee</camunda.starter.version>
     <spring.version>2.5.5</spring.version>
 
     <jaxb.version>3.0.2</jaxb.version>
@@ -149,16 +149,16 @@
       <version>${jaxb.version}</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.h2database</groupId>-->
+<!--      <artifactId>h2</artifactId>-->
+<!--    </dependency>-->
 
-    <!--    <dependency>-->
-    <!--      <groupId>com.microsoft.sqlserver</groupId>-->
-    <!--      <artifactId>mssql-jdbc</artifactId>-->
-    <!--      <version>${mssql-jdbc.version}</version>-->
-    <!--    </dependency>-->
+        <dependency>
+          <groupId>com.microsoft.sqlserver</groupId>
+          <artifactId>mssql-jdbc</artifactId>
+          <version>${mssql-jdbc.version}</version>
+        </dependency>
 
     <!--    <dependency>-->
     <!--      <groupId>com.oracle.database.jdbc</groupId>-->
