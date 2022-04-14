@@ -30,8 +30,8 @@ public class ProcessApplication {
 
 		for (int pi = 1; pi <= 1; pi++) {
 			defaultRuntimeService.startProcessInstanceByKey(defaultProcessKey, defaultProcessKey + " bk " + pi);
-//			tenant1RuntimeService.startProcessInstanceByKey(tenant1ProcessKey, tenant1ProcessKey + " bk " + pi);
-//			tenant2RuntimeService.startProcessInstanceByKey(tenant2ProcessKey, tenant2ProcessKey + " bk " + pi);
+			tenant1RuntimeService.startProcessInstanceByKey(tenant1ProcessKey, tenant1ProcessKey + " bk " + pi);
+			tenant2RuntimeService.startProcessInstanceByKey(tenant2ProcessKey, tenant2ProcessKey + " bk " + pi);
 			if ((pi % 1000) == 0) {
 				if (log.isDebugEnabled()) log.debug("-----> processPostDeploy created: {} process instances", pi);
 			}
