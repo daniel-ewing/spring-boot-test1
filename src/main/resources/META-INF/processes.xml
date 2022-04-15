@@ -7,11 +7,10 @@
         <properties>
             <property name="authorizationEnabled">true</property>
             <property name="databaseSchemaUpdate">false</property>
-            <property name="databaseTablePrefix">tenant1.</property>
-            <property name="jdbcUrl">jdbc:sqlserver://localhost:1417;databaseName=camunda_cs</property>
-            <property name="jdbcDriver">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+            <property name="databaseTablePrefix">TENANT1.</property>
+            <property name="jdbcUrl">jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE</property>
             <property name="jdbcUsername">sa</property>
-            <property name="jdbcPassword">Camunda1</property>
+            <property name="jdbcPassword">sa</property>
             <property name="jobExecutorActivate">true</property>
             <property name="jobExecutorDeploymentAware">true</property>
         </properties>
@@ -22,25 +21,27 @@
         <properties>
             <property name="authorizationEnabled">true</property>
             <property name="databaseSchemaUpdate">false</property>
-            <property name="databaseTablePrefix">tenant2.</property>
-            <property name="jdbcUrl">jdbc:sqlserver://localhost:1417;databaseName=camunda_cs</property>
-            <property name="jdbcDriver">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+            <property name="databaseTablePrefix">TENANT2.</property>
+            <property name="jdbcUrl">jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE</property>
             <property name="jdbcUsername">sa</property>
-            <property name="jdbcPassword">Camunda1</property>
+            <property name="jdbcPassword">sa</property>
             <property name="jobExecutorActivate">true</property>
             <property name="jobExecutorDeploymentAware">true</property>
         </properties>
     </process-engine>
 
-<!-- This is a simplistic example where all tenant engines auto-deploy the same resources. -->
     <process-archive name="default-process-application">
 <!--    The "default" engine is auto-configured by spring boot using the properties in the application.properties or application.yaml file. -->
         <process-engine>default</process-engine>
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">true</property>
-            <property name="resourceRootPath">pa:tenants/default/</property>
-<!--            <property name="resourceRootPath">classpath:BOOT-INF/classes/default/bpmn/</property>-->
+            <property name="resourceRootPath">classpath:tenants/default</property>
+<!--            TODO:   Determine if this is a bug in our spring boot implementation:-->
+<!--                    The above property value work in the IDE but does not work in an executable jar file.-->
+<!--                    Instead, the following property value is required in an executable jar file.:-->
+<!--            <property name="resourceRootPath">classpath:BOOT-INF/classes/tenants/default</property>-->
+
         </properties>
     </process-archive>
 
@@ -49,7 +50,12 @@
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">true</property>
-            <property name="resourceRootPath">pa:tenants/tenant1/</property>
+            <property name="resourceRootPath">classpath:tenants/tenant1/</property>
+<!--            TODO:   Determine if this is a bug in our spring boot implementation:-->
+<!--                    The above property value work in the IDE but does not work in an executable jar file.-->
+<!--                    Instead, the following property value is required in an executable jar file.:-->
+<!--            <property name="resourceRootPath">classpath:BOOT-INF/classes/tenants/tenant1/</property>-->
+
         </properties>
     </process-archive>
 
@@ -58,7 +64,11 @@
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">true</property>
-            <property name="resourceRootPath">pa:tenants/tenant2/</property>
+            <property name="resourceRootPath">classpath:tenants/tenant2/</property>
+<!--            TODO:   Determine if this is a bug in our spring boot implementation:-->
+<!--                    The above property value work in the IDE but does not work in an executable jar file.-->
+<!--                    Instead, the following property value is required in an executable jar file.:-->
+<!--            <property name="resourceRootPath">classpath:BOOT-INF/classes/tenants/tenant2/</property>-->
         </properties>
     </process-archive>
 

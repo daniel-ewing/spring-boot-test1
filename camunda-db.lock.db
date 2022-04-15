@@ -1,0 +1,6 @@
+#FileLock
+#Fri Apr 15 15:35:15 EDT 2022
+server=192.168.253.92\:64610
+hostName=CAMUNDA-1
+method=file
+id=1802eb8f0255ae58b351547cfe5fe868a9fa1a2f2a8
