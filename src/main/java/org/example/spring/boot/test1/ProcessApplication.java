@@ -12,7 +12,7 @@ import org.springframework.context.event.EventListener;
 @EnableProcessApplication
 @Slf4j
 public class ProcessApplication {
-	private final static String processKey = "process";
+	private final static String processKey = "main-process";
 	private RuntimeService runtimeService;
 
 	public ProcessApplication(RuntimeService runtimeService) {
