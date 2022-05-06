@@ -35,6 +35,10 @@ camunda:
     id-generator: strong # Other values: prefixed or simple (simple is not recommended).
     job-execution:
       enabled: true
+    webapp:
+      index-redirect-enabled: false
+      application-path: /
+
 
 server:
   port : 8080

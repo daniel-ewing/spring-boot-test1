@@ -7,7 +7,7 @@
 
   <properties>
 
-<!--    <camunda.version>7.10.0-ee</camunda.version>-->
+<!--    <camunda.version>7.10.1-ee</camunda.version>-->
 <!--    <camunda.starter.version>3.1.9</camunda.starter.version>-->
 <!--    <spring.version>2.0.9.RELEASE</spring.version>-->
 
@@ -47,8 +47,8 @@
 <!--    <camunda.starter.version>7.14.1-ee</camunda.starter.version>-->
 <!--    <spring.version>2.3.12.RELEASE</spring.version>-->
 
-<!--    <camunda.version>7.14.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.2-ee</camunda.starter.version>-->
+<!--    <camunda.version>7.14.3-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.14.3-ee</camunda.starter.version>-->
 <!--    <spring.version>2.4.11</spring.version>-->
 
 <!--    <camunda.version>7.14.5-ee</camunda.version>-->
@@ -79,8 +79,8 @@
 <!--    <camunda.starter.version>7.15.2-ee</camunda.starter.version>-->
 <!--    <spring.version>2.4.11</spring.version>-->
 
-<!--    <camunda.version>7.15.3-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.15.3-ee</camunda.starter.version>-->
+<!--    <camunda.version>7.15.4-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.15.4-ee</camunda.starter.version>-->
 <!--    <spring.version>2.5.5</spring.version>-->
 
 <!--    <camunda.version>7.15.6-ee</camunda.version>-->
@@ -90,6 +90,10 @@
     <camunda.version>7.16.2-ee</camunda.version>
     <camunda.starter.version>7.16.2-ee</camunda.starter.version>
     <spring.version>2.5.5</spring.version>
+
+<!--    <camunda.version>7.17.0-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.17.0-ee</camunda.starter.version>-->
+<!--    <spring.version>2.6.7</spring.version>-->
 
     <jaxb.version>3.0.2</jaxb.version>
 
