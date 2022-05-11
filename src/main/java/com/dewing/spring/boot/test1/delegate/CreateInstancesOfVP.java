@@ -30,14 +30,17 @@ public class CreateInstancesOfVP implements JavaDelegate {
         Map<String, Object> variables = setVariables();
 
         List<String> instanceIds = new ArrayList<>();
+        List<String> quotedInstanceIds = new ArrayList<>();
         for (int pi = 1; pi <= instancesToCreate; pi++) {
             ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi, variables);
             instanceIds.add(processInstance.getProcessInstanceId());
+            quotedInstanceIds.add("\"" + processInstance.getProcessInstanceId() + "\"");
             if ((pi % 1000) == 0) {
                 if (log.isDebugEnabled()) log.debug("-----> execute created: {} process instances", pi);
             }
         }
         delegateExecution.setVariable("instanceIds", instanceIds);
+        delegateExecution.setVariable("quotedInstanceIds", quotedInstanceIds);
 
 
         if (log.isDebugEnabled()) log.debug("-----> execute: Exit - {}", delegateExecution.getCurrentActivityId());

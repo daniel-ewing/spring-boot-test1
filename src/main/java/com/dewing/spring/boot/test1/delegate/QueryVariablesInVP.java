@@ -23,12 +23,15 @@ public class QueryVariablesInVP implements JavaDelegate {
         if (log.isDebugEnabled()) log.debug("-----> execute: Enter - {}", delegateExecution.getCurrentActivityId());
 
         List<String> instanceIds = (ArrayList)delegateExecution.getVariable("instanceIds");
+        List<String> quotedInstanceIds = (ArrayList)delegateExecution.getVariable("quotedInstanceIds");
         String[] instanceIdsArray = instanceIds.toArray(new String[0]);
 
         List<VariableInstance> variables = runtimeService.createVariableInstanceQuery()
                 .processInstanceIdIn(instanceIdsArray)
                 .list();
-
+        if (log.isDebugEnabled()) log.debug("-----> execute: quotedInstanceIds - {}", quotedInstanceIds);
+//        if (log.isDebugEnabled()) log.debug("-----> execute: instanceIdsArray - {}", instanceIdsArray);
+        if (log.isDebugEnabled()) log.debug("-----> execute: instanceIdsArray.length - {}", instanceIdsArray.length);
         if (log.isDebugEnabled()) log.debug("-----> execute: variables.size() - {}", variables.size());
 
         if (log.isDebugEnabled()) log.debug("-----> execute: Exit - {}", delegateExecution.getCurrentActivityId());
