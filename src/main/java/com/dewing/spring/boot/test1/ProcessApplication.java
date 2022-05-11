@@ -30,7 +30,7 @@ public class ProcessApplication {
 		variables.put("processKey", "variable-process");
 		variables.put("instancesToCreate", 800);
 
-		for (int pi = 1; pi <= 0; pi++) {
+		for (int pi = 1; pi <= 1; pi++) {
 			runtimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi, variables);
 			if ((pi % 1000) == 0) {
 				if (log.isDebugEnabled()) log.debug("-----> processPostDeploy created: {} process instances", pi);

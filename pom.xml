@@ -31,9 +31,9 @@
 <!--    <camunda.starter.version>3.4.4</camunda.starter.version>-->
 <!--    <spring.version>2.2.13.RELEASE</spring.version>-->
 
-    <camunda.version>7.13.0-ee</camunda.version>
-    <camunda.starter.version>7.13.0-ee</camunda.starter.version>
-    <spring.version>2.2.13.RELEASE</spring.version>
+<!--    <camunda.version>7.13.0-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.13.0-ee</camunda.starter.version>-->
+<!--    <spring.version>2.2.13.RELEASE</spring.version>-->
 
 <!--    <camunda.version>7.13.2-ee</camunda.version>-->
 <!--    <camunda.starter.version>7.13.2-ee</camunda.starter.version>-->
@@ -90,6 +90,10 @@
 <!--    <camunda.version>7.16.2-ee</camunda.version>-->
 <!--    <camunda.starter.version>7.16.2-ee</camunda.starter.version>-->
 <!--    <spring.version>2.5.5</spring.version>-->
+
+    <camunda.version>7.17.0-ee</camunda.version>
+    <camunda.starter.version>7.17.0-ee</camunda.starter.version>
+    <spring.version>2.6.7</spring.version>
 
     <ojdbc11.version>21.3.0.0</ojdbc11.version>
     <lombok.version>1.18.22</lombok.version>
