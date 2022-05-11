@@ -30,7 +30,6 @@ public class QueryVariablesInVP implements JavaDelegate {
                 .processInstanceIdIn(instanceIdsArray)
                 .list();
         if (log.isDebugEnabled()) log.debug("-----> execute: quotedInstanceIds - {}", quotedInstanceIds);
-//        if (log.isDebugEnabled()) log.debug("-----> execute: instanceIdsArray - {}", instanceIdsArray);
         if (log.isDebugEnabled()) log.debug("-----> execute: instanceIdsArray.length - {}", instanceIdsArray.length);
         if (log.isDebugEnabled()) log.debug("-----> execute: variables.size() - {}", variables.size());
 
