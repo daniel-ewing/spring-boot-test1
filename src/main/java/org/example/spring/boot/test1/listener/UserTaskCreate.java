@@ -5,7 +5,7 @@ import org.camunda.bpm.engine.delegate.DelegateTask;
 import org.camunda.bpm.engine.delegate.TaskListener;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("UserTaskCreate")
 @Slf4j
 public class UserTaskCreate implements TaskListener {
 

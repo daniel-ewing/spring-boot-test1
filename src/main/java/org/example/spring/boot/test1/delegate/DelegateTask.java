@@ -5,7 +5,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("DelegateTask")
 @Slf4j
 public class DelegateTask implements JavaDelegate {
 
