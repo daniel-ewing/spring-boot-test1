@@ -51,7 +51,7 @@ spring:
 ## MS SQL Server datasource
 #spring:
 #  datasource:
-#    url: jdbc:sqlserver://localhost:1417;databaseName=camunda_cs
+#    url: jdbc:sqlserver://database.camunda.local:1417;databaseName=camunda_cs
 #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #    username: sa
 #    password: Camunda1
@@ -59,8 +59,16 @@ spring:
 ## Oracle datasource
 #spring:
 #  datasource:
-#    url: jdbc:oracle:thin:@localhost:1521/ORCLPDB1
+#    url: jdbc:oracle:thin:@database.camunda.local:1521/ORCLPDB1
 #    driver-class-name: oracle.jdbc.OracleDriver
+#    username: camunda
+#    password: Camunda1
+
+## Postgres datasource
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://database.camunda.local:5432/camunda?currentSchema=camunda1
+#    driver-class-name: org.postgresql.Driver
 #    username: camunda
 #    password: Camunda1
 
