@@ -13,6 +13,7 @@ camunda:
       create: All tasks
     generic-properties:
       properties:
+        skipOutputMappingOnCanceledActivities: true
         # History Cleanup
 #        historyCleanupStrategy: removalTimeBased
 #        historyRemovalTimeStrategy: end

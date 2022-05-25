@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_11joxr2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_testError" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_09vdji6</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_09vdji6" sourceRef="StartEvent_1" targetRef="Activity_ST" />
+    <bpmn:serviceTask id="Activity_ST" name="my topic is &#34;aTopic&#34;" camunda:type="external" camunda:topic="aTopic">
+      <bpmn:incoming>Flow_09vdji6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1f9vbmt</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_04d2irh" sourceRef="Event_07shvxb" targetRef="Activity_UT" />
+    <bpmn:endEvent id="Event_0and9nr" name="End without Error" camunda:asyncBefore="true">
+      <bpmn:incoming>Flow_1f9vbmt</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1f9vbmt" sourceRef="Activity_ST" targetRef="Event_0and9nr" />
+    <bpmn:endEvent id="Event_00xwr42" name="End with Error" camunda:asyncBefore="true">
+      <bpmn:incoming>Flow_0yajr41</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0yajr41" sourceRef="Activity_UT" targetRef="Event_00xwr42" />
+    <bpmn:userTask id="Activity_UT" name="User Task" camunda:formKey="">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="staticVariable">I'm a static value</camunda:inputParameter>
+          <camunda:inputParameter name="dynamicVariable">${errorMsg}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_04d2irh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yajr41</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="Event_07shvxb" name="Fetch GENERIC_ERROR" attachedToRef="Activity_ST">
+      <bpmn:outgoing>Flow_04d2irh</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_16xj9si" errorRef="Error_1b3tqzu" camunda:errorMessageVariable="errorMsg" />
+    </bpmn:boundaryEvent>
+  </bpmn:process>
+  <bpmn:error id="Error_1b3tqzu" name="Error_Generic" errorCode="GENERIC_ERROR" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_testError">
+      <bpmndi:BPMNEdge id="Flow_09vdji6_di" bpmnElement="Flow_09vdji6">
+        <di:waypoint x="215" y="257" />
+        <di:waypoint x="270" y="257" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04d2irh_di" bpmnElement="Flow_04d2irh">
+        <di:waypoint x="370" y="199" />
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="440" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1f9vbmt_di" bpmnElement="Flow_1f9vbmt">
+        <di:waypoint x="370" y="257" />
+        <di:waypoint x="592" y="257" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yajr41_di" bpmnElement="Flow_0yajr41">
+        <di:waypoint x="540" y="120" />
+        <di:waypoint x="592" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="239" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="185" y="282" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xpr0lk_di" bpmnElement="Activity_ST">
+        <dc:Bounds x="270" y="217" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00xwr42_di" bpmnElement="Event_00xwr42">
+        <dc:Bounds x="592" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="574" y="145" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vz8ouh_di" bpmnElement="Activity_UT">
+        <dc:Bounds x="440" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0and9nr_di" bpmnElement="Event_0and9nr">
+        <dc:Bounds x="592" y="239" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="567" y="282" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0qszpl0_di" bpmnElement="Event_07shvxb">
+        <dc:Bounds x="352" y="199" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="399" y="197" width="81" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
