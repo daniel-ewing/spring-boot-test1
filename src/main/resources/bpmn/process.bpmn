@@ -4,16 +4,12 @@
     <bpmn:startEvent id="start" name="Start" camunda:asyncBefore="true">
       <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="delegate-task" />
+    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="groovy-script" />
     <bpmn:endEvent id="end" name="End">
       <bpmn:incoming>Flow_0lunvtl</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1gcymjn" sourceRef="delegate-task" targetRef="user-task" />
+    <bpmn:sequenceFlow id="Flow_1gcymjn" sourceRef="groovy-script" targetRef="user-task" />
     <bpmn:sequenceFlow id="Flow_0lunvtl" sourceRef="user-task" targetRef="end" />
-    <bpmn:serviceTask id="delegate-task" name="Delegate Task" camunda:delegateExpression="${DelegateTask}">
-      <bpmn:incoming>Flow_07ponm3</bpmn:incoming>
-      <bpmn:outgoing>Flow_1gcymjn</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:userTask id="user-task" name="User Task">
       <bpmn:extensionElements>
         <camunda:executionListener delegateExpression="${UserTaskExecutionStart}" event="start" />
@@ -22,6 +18,27 @@
       <bpmn:incoming>Flow_1gcymjn</bpmn:incoming>
       <bpmn:outgoing>Flow_0lunvtl</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:scriptTask id="groovy-script" name="Groovy script" scriptFormat="groovy">
+      <bpmn:incoming>Flow_07ponm3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gcymjn</bpmn:outgoing>
+      <bpmn:script>def map = [
+	"MyId": execution.getProcessInstanceId(),
+    "Payload": [
+        "Name": "LoanGuid",
+        "Value": execution.getProcessInstanceId(),
+        "Children": [
+            [
+                "Process": "Process",
+                "Name": "CamundaProcessInstanceId",
+                "Value": execution.getProcessInstanceId(),
+                "Status": "Started Process"
+            ]
+        ]
+    ]
+]
+
+execution.setVariable("map", map);</bpmn:script>
+    </bpmn:scriptTask>
     <bpmn:textAnnotation id="task-annotation">
       <bpmn:text>This task has execution
 and task listeners.</bpmn:text>
@@ -54,14 +71,14 @@ and task listeners.</bpmn:text>
           <dc:Bounds x="611" y="212" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1psbnf5_di" bpmnElement="delegate-task">
-        <dc:Bounds x="270" y="147" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05dly3o_di" bpmnElement="user-task">
         <dc:Bounds x="430" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_11eq9ep_di" bpmnElement="task-annotation">
         <dc:Bounds x="430" y="80" width="150" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01hzgdu_di" bpmnElement="groovy-script">
+        <dc:Bounds x="270" y="147" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1g3gxwl_di" bpmnElement="Association_1g3gxwl">
         <di:waypoint x="480" y="147" />

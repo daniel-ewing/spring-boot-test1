@@ -102,6 +102,7 @@
 
     <lombok.version>1.18.24</lombok.version>
     <logback.version>1.2.6</logback.version>
+    <groovy.all.version>3.0.10</groovy.all.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -188,6 +189,13 @@
 <!--      <artifactId>logback-classic</artifactId>-->
 <!--      <version>${logback.version}</version>-->
 <!--    </dependency>-->
+
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-all</artifactId>
+      <version>${groovy.all.version}</version>
+      <type>pom</type>
+    </dependency>
 
   </dependencies>
 
