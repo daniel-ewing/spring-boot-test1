@@ -208,6 +208,29 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>copy-bpmn-to-root-level</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <zip destfile="${project.build.directory}/${project.build.finalName}.jar"
+                     update="yes" compress="false"
+                     basedir="${project.build.directory}/classes/"
+                     includes="bpmn/**">
+                </zip>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
