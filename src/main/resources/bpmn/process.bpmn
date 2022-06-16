@@ -1,72 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0b4f8tx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0b4f8tx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <bpmn:process id="process" name="Process" isExecutable="true">
-    <bpmn:startEvent id="start" name="Start" camunda:asyncBefore="true">
-      <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="delegate-task" />
-    <bpmn:endEvent id="end" name="End">
+    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="message-0" targetRef="get-true-or-false" />
+    <bpmn:endEvent id="end-false" name="End False">
       <bpmn:incoming>Flow_0lunvtl</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1gcymjn" sourceRef="delegate-task" targetRef="user-task" />
-    <bpmn:sequenceFlow id="Flow_0lunvtl" sourceRef="user-task" targetRef="end" />
-    <bpmn:serviceTask id="delegate-task" name="Delegate Task" camunda:delegateExpression="${DelegateTask}">
+    <bpmn:sequenceFlow id="Flow_1gcymjn" sourceRef="get-true-or-false" targetRef="Gateway_0jqe61k" />
+    <bpmn:sequenceFlow id="Flow_0lunvtl" sourceRef="delegate-task" targetRef="end-false" />
+    <bpmn:startEvent id="message-0" name="Message 0" camunda:asyncAfter="true">
+      <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1yinxyc" messageRef="Message_06nsguy" />
+    </bpmn:startEvent>
+    <bpmn:businessRuleTask id="get-true-or-false" name="Get True Or False" camunda:decisionRef="getTrueOrFalse">
       <bpmn:incoming>Flow_07ponm3</bpmn:incoming>
       <bpmn:outgoing>Flow_1gcymjn</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:userTask id="user-task" name="User Task">
-      <bpmn:extensionElements>
-        <camunda:executionListener delegateExpression="${UserTaskExecutionStart}" event="start" />
-        <camunda:taskListener delegateExpression="${UserTaskCreate}" event="create" />
-      </bpmn:extensionElements>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_0jqe61k">
       <bpmn:incoming>Flow_1gcymjn</bpmn:incoming>
+      <bpmn:outgoing>Flow_0w0nn2b</bpmn:outgoing>
+      <bpmn:outgoing>Flow_13bn6e2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0w0nn2b" name="False" sourceRef="Gateway_0jqe61k" targetRef="delegate-task">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${trueOrFalse == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="end-true" name="End True">
+      <bpmn:incoming>Flow_13bn6e2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_13bn6e2" name="True" sourceRef="Gateway_0jqe61k" targetRef="end-true">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${trueOrFalse == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="delegate-task" name="Delegate Task" camunda:delegateExpression="${DelegateTask}">
+      <bpmn:incoming>Flow_0w0nn2b</bpmn:incoming>
       <bpmn:outgoing>Flow_0lunvtl</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:textAnnotation id="task-annotation">
-      <bpmn:text>This task has execution
-and task listeners.</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_1g3gxwl" sourceRef="user-task" targetRef="task-annotation" />
+    </bpmn:serviceTask>
   </bpmn:process>
+  <bpmn:message id="Message_06nsguy" name="message-0" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process">
       <bpmndi:BPMNEdge id="Flow_0lunvtl_di" bpmnElement="Flow_0lunvtl">
-        <di:waypoint x="530" y="187" />
-        <di:waypoint x="602" y="187" />
+        <di:waypoint x="640" y="120" />
+        <di:waypoint x="732" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1gcymjn_di" bpmnElement="Flow_1gcymjn">
-        <di:waypoint x="370" y="187" />
-        <di:waypoint x="430" y="187" />
+        <di:waypoint x="370" y="247" />
+        <di:waypoint x="425" y="247" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07ponm3_di" bpmnElement="Flow_07ponm3">
-        <di:waypoint x="215" y="187" />
-        <di:waypoint x="270" y="187" />
+        <di:waypoint x="215" y="247" />
+        <di:waypoint x="270" y="247" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
-        <dc:Bounds x="179" y="169" width="36" height="36" />
+      <bpmndi:BPMNEdge id="Flow_0w0nn2b_di" bpmnElement="Flow_0w0nn2b">
+        <di:waypoint x="450" y="222" />
+        <di:waypoint x="450" y="120" />
+        <di:waypoint x="540" y="120" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="185" y="212" width="25" height="14" />
+          <dc:Bounds x="453" y="168" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13bn6e2_di" bpmnElement="Flow_13bn6e2">
+        <di:waypoint x="475" y="247" />
+        <di:waypoint x="572" y="247" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="514" y="229" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0kw77n8_di" bpmnElement="message-0">
+        <dc:Bounds x="179" y="229" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="171" y="272" width="54" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1ipy0m9_di" bpmnElement="end">
-        <dc:Bounds x="602" y="169" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_1hphj6j_di" bpmnElement="get-true-or-false">
+        <dc:Bounds x="270" y="207" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0jqe61k_di" bpmnElement="Gateway_0jqe61k" isMarkerVisible="true">
+        <dc:Bounds x="425" y="222" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ipy0m9_di" bpmnElement="end-false">
+        <dc:Bounds x="732" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="611" y="212" width="20" height="14" />
+          <dc:Bounds x="727" y="145" width="50" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1psbnf5_di" bpmnElement="delegate-task">
-        <dc:Bounds x="270" y="147" width="100" height="80" />
+      <bpmndi:BPMNShape id="Event_0fmm5kb_di" bpmnElement="end-true">
+        <dc:Bounds x="572" y="229" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="568" y="272" width="45" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05dly3o_di" bpmnElement="user-task">
-        <dc:Bounds x="430" y="147" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_014gph1_di" bpmnElement="delegate-task">
+        <dc:Bounds x="540" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_11eq9ep_di" bpmnElement="task-annotation">
-        <dc:Bounds x="430" y="80" width="150" height="40" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_1g3gxwl_di" bpmnElement="Association_1g3gxwl">
-        <di:waypoint x="480" y="147" />
-        <di:waypoint x="480" y="120" />
-      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

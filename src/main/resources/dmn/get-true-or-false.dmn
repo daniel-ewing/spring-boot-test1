@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="Definitions_1slo59q" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
+  <decision id="getTrueOrFalse" name="Get True Or False">
+    <decisionTable id="DecisionTable_0x8lmdx">
+      <input id="Input_1" label="Priority">
+        <inputExpression id="InputExpression_1" typeRef="integer">
+          <text>priority</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="True Or False" name="trueOrFalse" typeRef="boolean" />
+      <rule id="DecisionRule_1wmyl3r">
+        <inputEntry id="UnaryTests_00l5acs">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nxnwst">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kcdw96">
+        <inputEntry id="UnaryTests_0uvt02q">
+          <text>!= 5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eviu6g">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="getTrueOrFalse">
+        <dc:Bounds height="80" width="180" x="160" y="120" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
