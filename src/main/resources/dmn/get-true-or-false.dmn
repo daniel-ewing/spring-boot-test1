@@ -8,6 +8,14 @@
         </inputExpression>
       </input>
       <output id="Output_1" label="True Or False" name="trueOrFalse" typeRef="boolean" />
+      <rule id="DecisionRule_0714uyv">
+        <inputEntry id="UnaryTests_0g8rf5d">
+          <text>&lt; 5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lj3rly">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1wmyl3r">
         <inputEntry id="UnaryTests_00l5acs">
           <text>5</text>
@@ -18,7 +26,7 @@
       </rule>
       <rule id="DecisionRule_1kcdw96">
         <inputEntry id="UnaryTests_0uvt02q">
-          <text>!= 5</text>
+          <text>&gt; 5</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1eviu6g">
           <text>false</text>

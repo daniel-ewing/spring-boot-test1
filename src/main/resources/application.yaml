@@ -13,6 +13,8 @@ camunda:
       create: All tasks
     generic-properties:
       properties:
+        cmmnEnabled: false
+        standaloneTasksEnabled: false
         # History Cleanup
 #        historyCleanupStrategy: removalTimeBased
 #        historyRemovalTimeStrategy: end

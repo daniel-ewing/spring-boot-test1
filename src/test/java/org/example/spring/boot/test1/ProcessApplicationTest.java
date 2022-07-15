@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DirtiesContext
 @SpringBootTest(properties = {
+        "camunda.bpm.job-execution.enabled=false",
         "spring.datasource.url=jdbc:h2:mem:ProcessApplicationTest;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE",
         "spring.cloud.config.enabled=false",
         "spring.cloud.bootstrap.enabled=false",
@@ -88,7 +89,7 @@ class ProcessApplicationTest {
                 () -> assertThat(processInstance).hasNotPassed("end-false")
         );
 
-        execute(job());
+//        execute(job());
 
         assertAll(
                 () -> assertThat(processInstance).hasPassed("end-true"),
