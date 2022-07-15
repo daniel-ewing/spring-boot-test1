@@ -1,5 +1,6 @@
 package org.example.spring.boot.test1;
 
+import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.RuntimeService;
@@ -21,6 +22,7 @@ import java.util.*;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -36,6 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @DirtiesContext
 @Deployment(resources = {"bpmn/PinMailer.bpmn"})
 @ActiveProfiles(profiles = "test")
+@Slf4j
 public class PinMailerWorkflowIT {
 
     @Autowired
@@ -101,8 +104,11 @@ public class PinMailerWorkflowIT {
         assertThat(processInstance).hasPassedInOrder(
             "ServiceTask_Validate_Inbound_Message",
             "SendTask_PinMailer_Request", // first card
-//            "Event_Receive_PinMailer_Request",
             "SendTask_PinMailer_Request", // second card
             "Event_PinMailer_End");
+
+        List<ProcessInstance> processInstanceList = runtimeService.createProcessInstanceQuery().list();
+        assertTrue( processInstanceList.size() == 2); // These two instances are each in a different process, waiting at activity "ServiceTask_CreatePinMailerCaseInDIP".
+        processInstanceList.forEach( (newProcessInstance) -> {log.info("newProcessInstance.getId() = {}", newProcessInstance.getId());});
    }
 }

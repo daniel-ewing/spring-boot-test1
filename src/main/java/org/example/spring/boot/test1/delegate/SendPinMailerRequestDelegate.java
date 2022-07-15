@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class SendPinMailerRequestDelegate implements JavaDelegate {
-
     private final ProcessEngine processEngine;
 
     public SendPinMailerRequestDelegate(ProcessEngine processEngine) {

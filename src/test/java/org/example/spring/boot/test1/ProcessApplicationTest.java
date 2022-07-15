@@ -1,7 +1,6 @@
 package org.example.spring.boot.test1;
 
 import lombok.extern.slf4j.Slf4j;
-import org.camunda.bpm.engine.OptimisticLockingException;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.RuntimeService;
@@ -57,16 +56,9 @@ class ProcessApplicationTest {
     void happyPath() {
         final int priority = 5;
 
-//        registerMocks();
-//
-//        when(accountManagementService.getCisNumberByAccountID(any())).thenReturn(CIS);
-
         final RuntimeService runtimeService = processEngine().getRuntimeService();
         Map<String, Object> variables = new HashMap<>();
         variables.put("priority", priority);
-//        final ProcessInstance processInstance = runtimeService
-//                .startProcessInstanceByMessage("message-0",
-//                        withVariables("priority", priority));
 
         final ProcessInstance processInstance = runtimeService
                 .startProcessInstanceByMessage("message-0", variables);
@@ -75,21 +67,13 @@ class ProcessApplicationTest {
                 () -> assertThat(processInstance).isStarted(),
                 () -> assertThat(processInstance).hasPassed("message-0")
         );
-        // TODO: Workaround for Optimistic Lock excetion: https://jira/browse/DEVA-83195
-        // final String jobId = processEngine().getManagementService().createJobQuery().singleResult().getId();
-        // processEngine().getManagementService().executeJob(jobId);
-        try {
-            execute(job());
-        } catch (OptimisticLockingException ex) {
-            log.error("#_# OptimisticLockingException, going to retry: ", ex);
-//            retry();
-        }
+
+        execute(job());
+
         assertAll(
                 () -> assertThat(processInstance).hasNotPassed("delegate-task"),
                 () -> assertThat(processInstance).hasNotPassed("end-false")
         );
-
-//        execute(job());
 
         assertAll(
                 () -> assertThat(processInstance).hasPassed("end-true"),
