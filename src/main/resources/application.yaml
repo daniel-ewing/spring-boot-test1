@@ -80,16 +80,16 @@ logging:
     # Camunda Loggers
     org.camunda: INFO     # WARNING!! THIS NAMESPACE WILL OUTPUT ALL CAMUNDA LOGS AT THE SPECIFIED LEVEL.
     org.example.spring.boot.test1: DEBUG
-#    org.camunda.bpm.engine.cmd: DEBUG
-#    org.camunda.bpm.engine.impl.persistence.entity: DEBUG
+    org.camunda.bpm.engine.cmd: DEBUG
+    org.camunda.bpm.engine.impl.persistence.entity: DEBUG
 #    org.camunda.bpm.engine.impl.batch.BatchEntity: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity.IncidentEntity: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity.JobEntity: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity.VariableInstanceEntity: DEBUG
 #    org.camunda.bpm.engine.jobexecutor: DEBUG
-#    org.camunda.bpm.engine.persistence: DEBUG
-#    org.camunda.bpm.engine.tx: DEBUG
+    org.camunda.bpm.engine.persistence: DEBUG
+    org.camunda.bpm.engine.tx: DEBUG
 #    # Common Camunda Dependencies
 #    org.apache.ibatis: INFO
 #    # Add Catalina logging

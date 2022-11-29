@@ -5,7 +5,7 @@
       <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="Gateway_1mf1vqo" />
-    <bpmn:userTask id="user-task" name="User Task" camunda:candidateGroups="test.group">
+    <bpmn:userTask id="user-task" name="User Task" camunda:assignee="user" camunda:candidateGroups="test.group">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_18z6dli</bpmn:incoming>
       <bpmn:outgoing>Flow_1k66dkh</bpmn:outgoing>
@@ -75,10 +75,6 @@
         <di:waypoint x="280" y="310" />
         <di:waypoint x="400" y="310" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1gkmijp_di" bpmnElement="Flow_1gkmijp">
-        <di:waypoint x="500" y="310" />
-        <di:waypoint x="600" y="310" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09jxwhj_di" bpmnElement="Flow_09jxwhj">
         <di:waypoint x="700" y="310" />
         <di:waypoint x="830" y="310" />
@@ -88,6 +84,10 @@
         <di:waypoint x="620" y="120" />
         <di:waypoint x="830" y="120" />
         <di:waypoint x="830" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gkmijp_di" bpmnElement="Flow_1gkmijp">
+        <di:waypoint x="500" y="310" />
+        <di:waypoint x="600" y="310" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
