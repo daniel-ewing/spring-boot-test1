@@ -87,13 +87,13 @@
 <!--    <camunda.starter.version>7.15.6-ee</camunda.starter.version>-->
 <!--    <spring.version>2.5.5</spring.version>-->
 
-<!--    <camunda.version>7.16.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.16.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.5.5</spring.version>-->
+    <camunda.version>7.16.6-ee</camunda.version>
+    <camunda.starter.version>7.16.6-ee</camunda.starter.version>
+    <spring.version>2.5.5</spring.version>
 
-    <camunda.version>7.17.1-ee</camunda.version>
-    <camunda.starter.version>7.17.1-ee</camunda.starter.version>
-    <spring.version>2.6.7</spring.version>
+<!--    <camunda.version>7.17.1-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.17.1-ee</camunda.starter.version>-->
+<!--    <spring.version>2.6.7</spring.version>-->
 
     <jaxb.version>3.0.2</jaxb.version>
 

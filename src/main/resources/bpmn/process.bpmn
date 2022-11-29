@@ -1,71 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0b4f8tx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0b4f8tx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.4.2">
   <bpmn:process id="process" name="Process" isExecutable="true">
     <bpmn:startEvent id="start" name="Start" camunda:asyncBefore="true">
       <bpmn:outgoing>Flow_07ponm3</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="delegate-task" />
-    <bpmn:endEvent id="end" name="End">
-      <bpmn:incoming>Flow_0lunvtl</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1gcymjn" sourceRef="delegate-task" targetRef="user-task" />
-    <bpmn:sequenceFlow id="Flow_0lunvtl" sourceRef="user-task" targetRef="end" />
-    <bpmn:serviceTask id="delegate-task" name="Delegate Task" camunda:delegateExpression="${DelegateTask}">
-      <bpmn:incoming>Flow_07ponm3</bpmn:incoming>
-      <bpmn:outgoing>Flow_1gcymjn</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:userTask id="user-task" name="User Task">
-      <bpmn:extensionElements>
-        <camunda:executionListener delegateExpression="${UserTaskExecutionStart}" event="start" />
-        <camunda:taskListener delegateExpression="${UserTaskCreate}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1gcymjn</bpmn:incoming>
-      <bpmn:outgoing>Flow_0lunvtl</bpmn:outgoing>
+    <bpmn:sequenceFlow id="Flow_07ponm3" sourceRef="start" targetRef="Gateway_1mf1vqo" />
+    <bpmn:userTask id="user-task" name="User Task" camunda:candidateGroups="test.group">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_18z6dli</bpmn:incoming>
+      <bpmn:outgoing>Flow_1k66dkh</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:loopCardinality xsi:type="bpmn:tFormalExpression">5</bpmn:loopCardinality>
+      </bpmn:multiInstanceLoopCharacteristics>
     </bpmn:userTask>
-    <bpmn:textAnnotation id="task-annotation">
-      <bpmn:text>This task has execution
-and task listeners.</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_1g3gxwl" sourceRef="user-task" targetRef="task-annotation" />
+    <bpmn:sequenceFlow id="Flow_18z6dli" sourceRef="Gateway_1mf1vqo" targetRef="user-task" />
+    <bpmn:parallelGateway id="Gateway_1mf1vqo" camunda:asyncAfter="true" camunda:exclusive="false">
+      <bpmn:incoming>Flow_07ponm3</bpmn:incoming>
+      <bpmn:outgoing>Flow_18z6dli</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1loyeoj</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_1loyeoj" sourceRef="Gateway_1mf1vqo" targetRef="run-query" />
+    <bpmn:sequenceFlow id="Flow_1gkmijp" sourceRef="run-query" targetRef="do-query" />
+    <bpmn:sequenceFlow id="Flow_09jxwhj" sourceRef="do-query" targetRef="Gateway_1jzu8lo" />
+    <bpmn:sequenceFlow id="Flow_1k66dkh" sourceRef="user-task" targetRef="Gateway_1jzu8lo" />
+    <bpmn:parallelGateway id="Gateway_1jzu8lo">
+      <bpmn:incoming>Flow_09jxwhj</bpmn:incoming>
+      <bpmn:incoming>Flow_1k66dkh</bpmn:incoming>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="run-query" name="Run Query">
+      <bpmn:incoming>Flow_1loyeoj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gkmijp</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="do-query" name="Do Query" camunda:delegateExpression="${DoQuery}">
+      <bpmn:incoming>Flow_1gkmijp</bpmn:incoming>
+      <bpmn:outgoing>Flow_09jxwhj</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process">
-      <bpmndi:BPMNEdge id="Flow_0lunvtl_di" bpmnElement="Flow_0lunvtl">
-        <di:waypoint x="530" y="187" />
-        <di:waypoint x="602" y="187" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1gcymjn_di" bpmnElement="Flow_1gcymjn">
-        <di:waypoint x="370" y="187" />
-        <di:waypoint x="430" y="187" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_07ponm3_di" bpmnElement="Flow_07ponm3">
-        <di:waypoint x="215" y="187" />
-        <di:waypoint x="270" y="187" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
-        <dc:Bounds x="179" y="169" width="36" height="36" />
+        <dc:Bounds x="179" y="199" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="185" y="212" width="25" height="14" />
+          <dc:Bounds x="186" y="242" width="24" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1ipy0m9_di" bpmnElement="end">
-        <dc:Bounds x="602" y="169" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="611" y="212" width="20" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Gateway_057nhwn_di" bpmnElement="Gateway_1mf1vqo">
+        <dc:Bounds x="255" y="192" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1psbnf5_di" bpmnElement="delegate-task">
-        <dc:Bounds x="270" y="147" width="100" height="80" />
+      <bpmndi:BPMNShape id="Gateway_1aixwsz_di" bpmnElement="Gateway_1jzu8lo">
+        <dc:Bounds x="805" y="192" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05dly3o_di" bpmnElement="user-task">
-        <dc:Bounds x="430" y="147" width="100" height="80" />
+        <dc:Bounds x="520" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_11eq9ep_di" bpmnElement="task-annotation">
-        <dc:Bounds x="430" y="80" width="150" height="40" />
+      <bpmndi:BPMNShape id="Activity_0x0ym48_di" bpmnElement="run-query">
+        <dc:Bounds x="400" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_1g3gxwl_di" bpmnElement="Association_1g3gxwl">
-        <di:waypoint x="480" y="147" />
-        <di:waypoint x="480" y="120" />
+      <bpmndi:BPMNShape id="Activity_0tw5krl_di" bpmnElement="do-query">
+        <dc:Bounds x="600" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_07ponm3_di" bpmnElement="Flow_07ponm3">
+        <di:waypoint x="215" y="217" />
+        <di:waypoint x="255" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18z6dli_di" bpmnElement="Flow_18z6dli">
+        <di:waypoint x="280" y="192" />
+        <di:waypoint x="280" y="120" />
+        <di:waypoint x="520" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1loyeoj_di" bpmnElement="Flow_1loyeoj">
+        <di:waypoint x="280" y="242" />
+        <di:waypoint x="280" y="310" />
+        <di:waypoint x="400" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gkmijp_di" bpmnElement="Flow_1gkmijp">
+        <di:waypoint x="500" y="310" />
+        <di:waypoint x="600" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09jxwhj_di" bpmnElement="Flow_09jxwhj">
+        <di:waypoint x="700" y="310" />
+        <di:waypoint x="830" y="310" />
+        <di:waypoint x="830" y="242" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1k66dkh_di" bpmnElement="Flow_1k66dkh">
+        <di:waypoint x="620" y="120" />
+        <di:waypoint x="830" y="120" />
+        <di:waypoint x="830" y="192" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
