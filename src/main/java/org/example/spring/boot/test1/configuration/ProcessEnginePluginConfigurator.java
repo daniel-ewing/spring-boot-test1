@@ -9,11 +9,6 @@ public class ProcessEnginePluginConfigurator extends AbstractProcessEnginePlugin
 
     @Override
     public void preInit(ProcessEngineConfigurationImpl processEngineConfiguration) {
-//        List<ProcessEnginePlugin> processEnginePlugins = processEngineConfiguration.getProcessEnginePlugins();
-//        if(processEnginePlugins == null) {
-//            processEnginePlugins = new ArrayList<ProcessEnginePlugin>();
-//        }
-
         processEngineConfiguration.setTenantIdProvider(new CustomTenantProvider());
     }
 }

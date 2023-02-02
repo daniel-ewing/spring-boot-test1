@@ -32,17 +32,6 @@ public class CustomTenantProvider implements TenantIdProvider {
 
         if (currentAuthentication != null) {
 
-//            List<String> tenantIds = currentAuthentication.getTenantIds();
-//            if (tenantIds.size() == 1) {
-//                return tenantIds.get(0);
-//
-//            } else if (tenantIds.isEmpty()) {
-//                throw new IllegalStateException("no authenticated tenant");
-//
-//            } else {
-//                throw new IllegalStateException("more than one authenticated tenant");
-//            }
-
             if (currentAuthentication.getUserId().equals("user1")) {
                 return "tenant1";
             } else if (currentAuthentication.getUserId().equals("user2")) {
