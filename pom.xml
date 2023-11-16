@@ -85,15 +85,27 @@
 
 <!--    <camunda.version>7.15.6-ee</camunda.version>-->
 <!--    <camunda.starter.version>7.15.6-ee</camunda.starter.version>-->
-<!--    <spring.version>2.5.5</spring.version>-->
+<!--    <spring.version>2.5.15</spring.version>-->
 
 <!--    <camunda.version>7.16.2-ee</camunda.version>-->
 <!--    <camunda.starter.version>7.16.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.5.5</spring.version>-->
+<!--    <spring.version>2.5.15</spring.version>-->
 
-    <camunda.version>7.17.2-ee</camunda.version>
-    <camunda.starter.version>7.17.2-ee</camunda.starter.version>
-    <spring.version>2.6.7</spring.version>
+<!--    <camunda.version>7.17.2-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.17.2-ee</camunda.starter.version>-->
+<!--    <spring.version>2.6.15</spring.version>-->
+
+<!--    <camunda.version>7.18.12-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.18.2-ee</camunda.starter.version>-->
+<!--    <spring.version>2.7.17</spring.version>-->
+
+<!--    <camunda.version>7.19.8-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.19.8-ee</camunda.starter.version>-->
+<!--    <spring.version>2.7.17</spring.version>-->
+
+    <camunda.version>7.20.1-ee</camunda.version>
+    <camunda.starter.version>7.20.1-ee</camunda.starter.version>
+    <spring.version>3.1.5</spring.version>
 
     <jaxb.version>3.0.2</jaxb.version>
 
@@ -101,7 +113,7 @@
     <ojdbc11.version>21.3.0.0</ojdbc11.version>
     <postgresql.version>42.3.5</postgresql.version>
 
-    <lombok.version>1.18.24</lombok.version>
+    <lombok.version>1.18.30</lombok.version>
     <logback.version>1.2.6</logback.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -142,6 +154,11 @@
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
       <version>${camunda.starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine-rest-openapi</artifactId>
+      <version>${camunda.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
