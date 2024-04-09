@@ -9,6 +9,8 @@ camunda:
     authorization:
       enabled: true
 #    enableExceptionsAfterUnhandledBpmnError: true
+#    default-serialization-format: application/json
+    default-serialization-format: application/x-java-serialized-object
     filter:
       create: All tasks
     generic-properties:
@@ -16,7 +18,7 @@ camunda:
         # History Cleanup
 #        historyCleanupStrategy: removalTimeBased
 #        historyRemovalTimeStrategy: end
-#        historyTimeToLive: 30
+#        historyTimeToLive: P30D
 #        batchOperationHistoryTimeToLive: 1
 #        historyCleanupJobLogTimeToLive: 1
 #        historyCleanupBatchWindowStartTime: "00:00"
@@ -74,12 +76,12 @@ spring:
 
 # Logging Settings
 logging:
-  file:
-    path: ./logs           # specify a path to write to file, otherwise it defaults to the console.
+#  file:
+#    path: ./logs           # specify a path to write to file, otherwise it defaults to the console.
   level:
     # Camunda Loggers
     org.camunda: INFO     # WARNING!! THIS NAMESPACE WILL OUTPUT ALL CAMUNDA LOGS AT THE SPECIFIED LEVEL.
-    org.example.spring.boot.test1: DEBUG
+#    org.example.spring.boot.test1: DEBUG
 #    org.camunda.bpm.engine.cmd: DEBUG
 #    org.camunda.bpm.engine.impl.persistence.entity: DEBUG
 #    org.camunda.bpm.engine.impl.batch.BatchEntity: DEBUG

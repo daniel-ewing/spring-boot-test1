@@ -12,7 +12,7 @@ import org.springframework.context.event.EventListener;
 @EnableProcessApplication
 @Slf4j
 public class ProcessApplication {
-	private final static String processKey = "process";
+	private final static String processKey = "testProcess";
 	private RuntimeService runtimeService;
 
 	public ProcessApplication(RuntimeService runtimeService) {
@@ -24,7 +24,7 @@ public class ProcessApplication {
 		if (log.isDebugEnabled()) log.debug("-----> processPostDeploy: Enter");
 
 		for (int pi = 1; pi <= 1; pi++) {
-			runtimeService.startProcessInstanceByKey(processKey, processKey + " bk " + pi);
+			runtimeService.startProcessInstanceByKey(processKey, "" + pi);
 			if ((pi % 1000) == 0) {
 				if (log.isDebugEnabled()) log.debug("-----> processPostDeploy created: {} process instances", pi);
 			}

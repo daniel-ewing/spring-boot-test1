@@ -71,9 +71,9 @@
 <!--    <camunda.starter.version>7.14.12-ee</camunda.starter.version>-->
 <!--    <spring.version>2.4.11</spring.version>-->
 
-<!--    <camunda.version>7.15.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.15.0-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
+    <camunda.version>7.15.0-ee</camunda.version>
+    <camunda.starter.version>7.15.0-ee</camunda.starter.version>
+    <spring.version>2.4.11</spring.version>
 
 <!--    <camunda.version>7.15.2-ee</camunda.version>-->
 <!--    <camunda.starter.version>7.15.2-ee</camunda.starter.version>-->
@@ -95,18 +95,19 @@
 <!--    <camunda.starter.version>7.17.2-ee</camunda.starter.version>-->
 <!--    <spring.version>2.6.15</spring.version>-->
 
-<!--    <camunda.version>7.18.12-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.18.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.7.17</spring.version>-->
+<!--    <camunda.version>7.18.4-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.18.4-ee</camunda.starter.version>-->
+<!--    <spring.version>2.5.8</spring.version>-->
 
-<!--    <camunda.version>7.19.8-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.19.8-ee</camunda.starter.version>-->
-<!--    <spring.version>2.7.17</spring.version>-->
+    <camunda.version>7.19.9-ee</camunda.version>
+    <camunda.starter.version>7.19.9-ee</camunda.starter.version>
+    <spring.version>2.7.17</spring.version>
 
-    <camunda.version>7.20.1-ee</camunda.version>
-    <camunda.starter.version>7.20.1-ee</camunda.starter.version>
-    <spring.version>3.1.5</spring.version>
+<!--    <camunda.version>7.20.1-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.20.1-ee</camunda.starter.version>-->
+<!--    <spring.version>3.1.5</spring.version>-->
 
+    <spin.version>1.19.6</spin.version>
     <jaxb.version>3.0.2</jaxb.version>
 
     <mssql.jdbc.version>9.4.0.jre11</mssql.jdbc.version>
@@ -136,6 +137,13 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+      <dependency>
+        <groupId>org.camunda.spin</groupId>
+        <artifactId>camunda-spin-bom</artifactId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>${spin.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -163,6 +171,19 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine-plugin-spin</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-dataformat-all</artifactId>
     </dependency>
 
     <dependency>
@@ -226,29 +247,29 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>copy-bpmn-to-root-level</id>
-            <phase>package</phase>
-            <configuration>
-              <target>
-                <zip destfile="${project.build.directory}/${project.build.finalName}.jar"
-                     update="yes" compress="false"
-                     basedir="${project.build.directory}/classes/"
-                     includes="bpmn/**">
-                </zip>
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-antrun-plugin</artifactId>-->
+<!--        <version>3.0.0</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>copy-bpmn-to-root-level</id>-->
+<!--            <phase>package</phase>-->
+<!--            <configuration>-->
+<!--              <target>-->
+<!--                <zip destfile="${project.build.directory}/${project.build.finalName}.jar"-->
+<!--                     update="yes" compress="false"-->
+<!--                     basedir="${project.build.directory}/classes/"-->
+<!--                     includes="bpmn/**">-->
+<!--                </zip>-->
+<!--              </target>-->
+<!--            </configuration>-->
+<!--            <goals>-->
+<!--              <goal>run</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 </project>
