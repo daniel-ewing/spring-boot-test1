@@ -71,9 +71,9 @@
 <!--    <camunda.starter.version>7.14.12-ee</camunda.starter.version>-->
 <!--    <spring.version>2.4.11</spring.version>-->
 
-    <camunda.version>7.15.0-ee</camunda.version>
-    <camunda.starter.version>7.15.0-ee</camunda.starter.version>
-    <spring.version>2.4.11</spring.version>
+<!--    <camunda.version>7.15.0-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.15.0-ee</camunda.starter.version>-->
+<!--    <spring.version>2.4.11</spring.version>-->
 
 <!--    <camunda.version>7.15.2-ee</camunda.version>-->
 <!--    <camunda.starter.version>7.15.2-ee</camunda.starter.version>-->
