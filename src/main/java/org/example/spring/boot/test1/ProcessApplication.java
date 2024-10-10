@@ -12,8 +12,8 @@ import org.springframework.context.event.EventListener;
 @EnableProcessApplication
 @Slf4j
 public class ProcessApplication {
-	private final static String processKey = "process";
-	private RuntimeService runtimeService;
+	private final RuntimeService runtimeService;
+	private final static String processKey = "processB";
 
 	public ProcessApplication(RuntimeService runtimeService) {
 		this.runtimeService = runtimeService;
