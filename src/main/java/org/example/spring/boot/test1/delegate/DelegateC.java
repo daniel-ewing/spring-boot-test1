@@ -14,8 +14,6 @@ import java.util.Map;
 @Slf4j
 public class DelegateC implements JavaDelegate {
     private final RuntimeService runtimeService;
-    private final static String processKey = "processA";
-
 
     public DelegateC(RuntimeService runtimeService) {
         this.runtimeService = runtimeService;

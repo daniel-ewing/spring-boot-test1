@@ -15,6 +15,7 @@ public class DelegateB implements JavaDelegate {
     private final RuntimeService runtimeService;
     private final static String processKey1 = "processA";
     private final static String processKey2 = "processC";
+    private final static String processKey3 = "processD";
 
 
     public DelegateB(RuntimeService runtimeService) {
@@ -34,6 +35,7 @@ public class DelegateB implements JavaDelegate {
 
         runtimeService.startProcessInstanceByKey(processKey1, variables);
         runtimeService.startProcessInstanceByKey(processKey2, variables);
+        runtimeService.startProcessInstanceByKey(processKey3, variables);
 
         if (log.isDebugEnabled()) log.debug("-----> execute: Exit - instance: {} - activity: {}", delegateExecution.getProcessInstanceId(), delegateExecution.getCurrentActivityId());
     }
