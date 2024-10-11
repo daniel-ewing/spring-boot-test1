@@ -182,7 +182,7 @@
 
 <!--    <dependency>-->
 <!--      <groupId>com.microsoft.sqlserver</groupId>-->
-<!--      <artifactId>mssql.jdbc</artifactId>-->
+<!--      <artifactId>mssql-jdbc</artifactId>-->
 <!--      <version>${mssql.jdbc.version}</version>-->
 <!--    </dependency>-->
 
