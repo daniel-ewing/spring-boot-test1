@@ -1,40 +1,46 @@
 camunda:
   bpm:
-    admin-user:
-      id: CamundaAdmin
-      password: CamundaAdmin
-      firstName: Camunda
-      lastName: Admin
-      email: CamundaAdmin@camunda.com
-    authorization:
-      enabled: true
-#    enableExceptionsAfterUnhandledBpmnError: true
+    job-execution:
+      enabled: false
+#    database:
+#      schema-name: workflow
+#      table-prefix: workflow.
     filter:
       create: All tasks
-    generic-properties:
-      properties:
-        # History Cleanup
-#        historyCleanupStrategy: removalTimeBased
-#        historyRemovalTimeStrategy: end
-#        historyTimeToLive: 30
-#        batchOperationHistoryTimeToLive: 1
-#        historyCleanupJobLogTimeToLive: 1
-#        historyCleanupBatchWindowStartTime: "00:00"
-#        historyCleanupBatchWindowEndTime: "10:00"
-#        saturdayHistoryCleanupBatchWindowStartTime: "21:00"
-#        saturdayHistoryCleanupBatchWindowEndTime: "02:00"
-#        sundayHistoryCleanupBatchWindowStartTime: "21:00"
-#        sundayHistoryCleanupBatchWindowEndTime: "02:00"
-        # MDC Logging
-#        loggingContextActivityId: activityName
-        # Tasklist Query
-#        queryMaxResultsLimit: 2000
-        # Telemetry
-        initializeTelemetry: false
-        telemetryReporterActivate: false
-    id-generator: strong # Other values: prefixed or simple (simple is not recommended).
-    job-execution:
+    authorization:
       enabled: true
+
+security:
+  ldap:
+    initialContextFactory: com.sun.jndi.ldap.LdapCtxFactory
+    securityAuthentication: simple
+    serverUrl: ldaps://MOLLY.AQUARIUM.tank:636
+    managerDn: CN=CamundaAdmin,CN=Users,DC=AQUARIUM,DC=tank
+    managerPassword: CamundaAdmin
+    baseDn: DC=AQUARIUM,DC=tank
+    userDnPattern:
+    userSearchBase: CN=Users
+    userSearchFilter: (objectclass=person)
+    groupSearchBase:
+    groupSearchFilter: (objectclass=group)
+    userIdAttribute: cn
+    userFirstnameAttribute: givenName
+    userLastnameAttribute: sn
+    userEmailAttribute: mail
+    userPasswordAttribute: userpassword
+    groupIdAttribute: cn
+    groupNameAttribute: name
+    #    groupNameAttribute: sAMAccountName
+    groupTypeAttribute:
+    groupMemberAttribute: member
+    sortControlSupported: false
+    useSsl: true
+    usePosixGroups: false
+    allowAnonymousLogin: false
+    acceptUntrustedCertificates: true
+    authorizationCheckEnabled: false
+  administrator:
+    administratorGroupName: CamundaAdmins
 
 server:
   port : 8080

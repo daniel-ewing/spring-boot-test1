@@ -4,114 +4,16 @@
   <groupId>org.example</groupId>
   <artifactId>spring-boot-test1</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <properties>
 
-<!--    <camunda.version>7.10.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>3.1.9</camunda.starter.version>-->
-<!--    <spring.version>2.0.9.RELEASE</spring.version>-->
+    <camunda.version>7.22.1-ee</camunda.version>
+    <camunda.starter.version>7.22.1-ee</camunda.starter.version>
+    <spring.version>3.3.5</spring.version>
 
-<!--    <camunda.version>7.10.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>3.2.11</camunda.starter.version>-->
-<!--    <spring.version>2.1.18.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.11.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>3.3.10</camunda.starter.version>-->
-<!--    <spring.version>2.1.18.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.11.20-ee</camunda.version>-->
-<!--    <camunda.starter.version>3.3.10</camunda.starter.version>-->
-<!--    <spring.version>2.1.18.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.12.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>3.4.4</camunda.starter.version>-->
-<!--    <spring.version>2.2.13.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.12.4-ee</camunda.version>-->
-<!--    <camunda.starter.version>3.4.4</camunda.starter.version>-->
-<!--    <spring.version>2.2.13.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.13.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.13.0-ee</camunda.starter.version>-->
-<!--    <spring.version>2.2.13.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.13.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.13.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.2.13.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.13.3-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.13.3-ee</camunda.starter.version>-->
-<!--    <spring.version>2.3.12.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.14.1-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.1-ee</camunda.starter.version>-->
-<!--    <spring.version>2.3.12.RELEASE</spring.version>-->
-
-<!--    <camunda.version>7.14.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.14.5-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.5-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.14.6-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.6-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.14.8-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.8-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.14.10-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.10-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.14.12-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.14.12-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.15.0-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.15.0-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.15.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.15.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.4.11</spring.version>-->
-
-<!--    <camunda.version>7.15.3-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.15.3-ee</camunda.starter.version>-->
-<!--    <spring.version>2.5.5</spring.version>-->
-
-<!--    <camunda.version>7.15.6-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.15.6-ee</camunda.starter.version>-->
-<!--    <spring.version>2.5.15</spring.version>-->
-
-<!--    <camunda.version>7.16.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.16.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.5.15</spring.version>-->
-
-<!--    <camunda.version>7.17.2-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.17.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.6.15</spring.version>-->
-
-<!--    <camunda.version>7.18.12-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.18.2-ee</camunda.starter.version>-->
-<!--    <spring.version>2.7.17</spring.version>-->
-
-<!--    <camunda.version>7.19.8-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.19.8-ee</camunda.starter.version>-->
-<!--    <spring.version>2.7.17</spring.version>-->
-
-<!--    <camunda.version>7.20.1-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.20.1-ee</camunda.starter.version>-->
-<!--    <spring.version>3.1.5</spring.version>-->
-
-    <camunda.version>7.21.0-ee</camunda.version>
-    <camunda.starter.version>7.21.0-ee</camunda.starter.version>
-    <spring.version>3.2.5</spring.version>
-
-    <jaxb.version>3.0.2</jaxb.version>
+<!--    <jaxb.version>3.0.2</jaxb.version>-->
+    <jaxb-api.version>2.3.1</jaxb-api.version>
 
     <mssql.jdbc.version>9.4.0.jre11</mssql.jdbc.version>
     <ojdbc11.version>21.3.0.0</ojdbc11.version>
@@ -145,58 +47,69 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter</artifactId>
-      <version>${camunda.starter.version}</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>10.1.34</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-core</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-      <version>${camunda.starter.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
-      <version>${camunda.starter.version}</version>
+      <groupId>org.camunda.bpm.identity</groupId>
+      <artifactId>camunda-identity-ldap</artifactId>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.microsoft.sqlserver</groupId>-->
+<!--      <artifactId>mssql-jdbc</artifactId>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-configuration-processor</artifactId>-->
+<!--      <optional>true</optional>-->
+<!--    </dependency>-->
     <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine-rest-openapi</artifactId>
-      <version>${camunda.version}</version>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>${jaxb-api.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jdbc</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-test</artifactId>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
 
     <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-      <version>${jaxb.version}</version>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+      <version>${camunda.starter.version}</version>
     </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>com.sun.xml.bind</groupId>-->
+<!--      <artifactId>jaxb-impl</artifactId>-->
+<!--      <version>${jaxb.version}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
-
-<!--    <dependency>-->
-<!--      <groupId>com.microsoft.sqlserver</groupId>-->
-<!--      <artifactId>mssql-jdbc</artifactId>-->
-<!--      <version>${mssql.jdbc.version}</version>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>com.oracle.database.jdbc</groupId>-->
-<!--      <artifactId>ojdbc11</artifactId>-->
-<!--      <version>${ojdbc11.version}</version>-->
-<!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.postgresql</groupId>-->
-<!--      <artifactId>postgresql</artifactId>-->
-<!--      <version>${postgresql.version}</version>-->
-<!--    </dependency>-->
 
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -205,11 +118,6 @@
       <scope>provided</scope>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>ch.qos.logback</groupId>-->
-<!--      <artifactId>logback-classic</artifactId>-->
-<!--      <version>${logback.version}</version>-->
-<!--    </dependency>-->
 
   </dependencies>
 
@@ -218,41 +126,8 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring.version}</version>
-        <configuration>
-          <layout>ZIP</layout>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>copy-bpmn-to-root-level</id>
-            <phase>package</phase>
-            <configuration>
-              <target>
-                <zip destfile="${project.build.directory}/${project.build.finalName}.jar"
-                     update="yes" compress="false"
-                     basedir="${project.build.directory}/classes/"
-                     includes="bpmn/**">
-                </zip>
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
+
 </project>
