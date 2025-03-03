@@ -103,13 +103,13 @@
 <!--    <camunda.starter.version>7.19.8-ee</camunda.starter.version>-->
 <!--    <spring.version>2.7.17</spring.version>-->
 
-<!--    <camunda.version>7.20.1-ee</camunda.version>-->
-<!--    <camunda.starter.version>7.20.1-ee</camunda.starter.version>-->
-<!--    <spring.version>3.1.5</spring.version>-->
+    <camunda.version>7.20.0-ee</camunda.version>
+    <camunda.starter.version>7.20.0-ee</camunda.starter.version>
+    <spring.version>3.1.5</spring.version>
 
-    <camunda.version>7.21.0-ee</camunda.version>
-    <camunda.starter.version>7.21.0-ee</camunda.starter.version>
-    <spring.version>3.2.5</spring.version>
+<!--    <camunda.version>7.21.0-ee</camunda.version>-->
+<!--    <camunda.starter.version>7.21.0-ee</camunda.starter.version>-->
+<!--    <spring.version>3.2.5</spring.version>-->
 
     <jaxb.version>3.0.2</jaxb.version>
 
@@ -120,6 +120,7 @@
     <lombok.version>1.18.30</lombok.version>
     <logback.version>1.2.6</logback.version>
 
+    <maven.antrun.plugin.version>3.1.0</maven.antrun.plugin.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
@@ -161,8 +162,15 @@
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine-rest-openapi</artifactId>
-      <version>${camunda.version}</version>
+      <artifactId>camunda-engine-plugin-connect</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.connect</groupId>
+      <artifactId>camunda-connect-connectors-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.connect</groupId>
+      <artifactId>camunda-connect-http-client</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -233,7 +241,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>${maven.antrun.plugin.version}</version>
         <executions>
           <execution>
             <id>copy-bpmn-to-root-level</id>
